@@ -11,7 +11,9 @@ def create_app():
 
     #set this in AWS
     app.config['SECRET_KEY'] = os.getenv('DB_SECRET')
-
+    #16 MB max file length
+    app.config['MAX_CONTENT_LENGTH'] = 16 * 1000 * 1000 
+    app.config['UPLOAD_EXTENSIONS'] = ['.txt']
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 
     db.init_app(app)

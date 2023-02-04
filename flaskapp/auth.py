@@ -14,7 +14,6 @@ def login():
 def login_post():
     email = request.form.get('email')
     password = request.form.get('password')
-
     remember = True if request.form.get('remember') else False
 
     #get user and check PW hashses. if either fail, kick em back to login screen, otherwise log them in and go to profile
