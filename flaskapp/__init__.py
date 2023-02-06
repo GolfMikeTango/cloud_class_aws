@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 import os
+import uuid
 
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
@@ -10,7 +11,7 @@ def create_app():
     app = Flask(__name__)
 
     #set this in AWS
-    app.config['SECRET_KEY'] = os.getenv('DB_SECRET')
+    app.config['SECRET_KEY'] = uuid.uuid4().hex
     #16 MB max file length
     app.config['MAX_CONTENT_LENGTH'] = 16 * 1000 * 1000 
     app.config['UPLOAD_EXTENSIONS'] = ['.txt']
